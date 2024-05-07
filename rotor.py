@@ -1,8 +1,8 @@
 class Rotor:
-	def _init_(self, cableado, notch):
+	def _init_(self, cableado, ranura):
 		self.izq = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 		self.der = cableado
-		self.notch = notch
+		self.ranura = ranura
 
 	def adelante(self, señal):
 		letra = self.der[señal]
@@ -35,6 +35,6 @@ class Rotor:
 	def confAnillo(self, n):
 		self.rotar(n-1, adelante = False)
 
-		n_notch = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".find(self.notch)
-		self.notch = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"[(n_notch - n) % 26]
+		n_ranura = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".find(self.ranura)
+		self.ranura = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"[(n_ranura - n) % 26]
 
