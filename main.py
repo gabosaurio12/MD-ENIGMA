@@ -18,19 +18,19 @@ C = Reflector("FVPJIAOYEDRZXWGCTKUQSBNMHL")
 # Teclado y Enchufe (Plugboard)
 
 teclado = Teclado()
-enchufe = Enchufe(["AT", "KL", "MI"])
+enchufe = Enchufe(["MI", "LA", "DO"])
 
 # Definir Enigma (Elegir el orden de los rotores -Rotors-)
 
-ENIGMA = Enigma(B, I, II, IV, enchufe, teclado)
+ENIGMA = Enigma(B, I, V, III, enchufe, teclado)
 
 # Colocar la llave del mensaje (Rotor Start)
 
-ENIGMA.colocarLlave("LIZ")
+ENIGMA.colocarLlave("PAR")
 
 # Configurar Anillos (Rings)
 
-ENIGMA.confAnillo((15, 11, 23))
+ENIGMA.confAnillo((1, 2, 3))
 
 # Cifrar mensaje
 
