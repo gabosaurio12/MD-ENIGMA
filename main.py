@@ -1,14 +1,42 @@
-"""
-Reflector: A
-Rotores: I-II-III
-Enchufe: A-R, G-K, O-X
-Mensaje: A => X
-"""
+from teclado import Teclado
+from enchufe import Enchufe
+from rotor import Rotor
+from reflector import Reflector
+from enigma import Enigma
 
-
+# Componentes de enigma
 
 I = Rotor("EKMFLGDQVZNTOWYHXUSPAIBRCJ", "Q")
 II = Rotor("AJDKSIRUXBLHWTMCQGZNPYFVOE", "E")
 III = Rotor("BDFHJLCPRTXVZNYEIWGAKMUSQO", "V")
 IV = Rotor("ESOVPZJAYQUIRHXLNFTGKDCMWB", "J")
 V = Rotor("VZBRGITYUPSDNHLXAWMJQOFECK", "Z")
+A = Reflector("EJMZALYXVBWFCRQUONTSPIKHGD")
+B = Reflector("YRUHQSLDPXNGOKMIEBFZCWVJAT")
+C = Reflector("FVPJIAOYEDRZXWGCTKUQSBNMHL")
+
+# Teclado y Enchufe (Plugboard)
+
+teclado = Teclado()
+enchufe = Enchufe(["AT", "KL", "MI"])
+
+# Definir Enigma (Elegir el orden de los rotores -Rotors-)
+
+ENIGMA = Enigma(B, I, II, IV, enchufe, teclado)
+
+# Colocar la llave del mensaje (Rotor Start)
+
+ENIGMA.colocarLlave("LIZ")
+
+# Configurar Anillos (Rings)
+
+ENIGMA.confAnillo((15, 11, 23))
+
+# Cifrar mensaje
+
+mensaje = "TEAMO" 
+cifrarTexto = ""
+for letra in mensaje:
+	cifrarTexto = cifrarTexto + ENIGMA.cifrar(letra)
+
+print(cifrarTexto)

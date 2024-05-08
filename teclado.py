@@ -1,9 +1,9 @@
 class Teclado:
 
-	def forward(propio, letra):
-		signal = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".find(letra)
-		return signal
+	def forward(self, letra):
+		señal = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".find(letra)
+		return señal
 
-	def backward(propio, signal):
-		letra = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"[signal]
+	def backward(self, señal):
+		letra = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"[señal]
 		return letra
