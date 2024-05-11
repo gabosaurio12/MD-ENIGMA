@@ -22,19 +22,19 @@ enchufe = Enchufe(["MI", "LA", "DO"])
 
 # Definir Enigma (Elegir el orden de los rotores -Rotors-)
 
-ENIGMA = Enigma(B, I, V, III, enchufe, teclado)
+ENIGMA = Enigma(B, I, II, III, enchufe, teclado)
 
 # Colocar la llave del mensaje (Rotor Start)
 
-ENIGMA.colocarLlave("PAR")
+ENIGMA.colocarLlave("DOG")
 
 # Configurar Anillos (Rings)
 
-ENIGMA.confAnillo((1, 2, 3))
+ENIGMA.confAnillo((1, 1, 1))
 
 # Cifrar mensaje
 
-mensaje = "TEAMO" 
+mensaje = "HOLA" 
 cifrarTexto = ""
 for letra in mensaje:
 	cifrarTexto = cifrarTexto + ENIGMA.cifrar(letra)

@@ -23,6 +23,10 @@ PANTALLA = pygame.display.set_mode((ANCHO, ALTURA))
 MARGENES = {"top":180, "bottom":100, "left":100, "right":100}
 GAP = 100
 
+ENTRADA = ""
+SALIDA = ""
+PATH = []
+
 # Componentes de enigma
 
 I = Rotor("EKMFLGDQVZNTOWYHXUSPAIBRCJ", "Q")
@@ -45,20 +49,21 @@ ENIGMA = Enigma(B, I, II, III, enchufe, teclado)
 
 # Colocar la llave del mensaje (Rotor Start)
 
-ENIGMA.colocarLlave("PAR")
+ENIGMA.colocarLlave("DOG")
 
 # Configurar Anillos (Rings)
 
 ENIGMA.confAnillo((1, 1, 1))
 
 # Cifrar mensaje
-
+"""
 mensaje = "TEAMO" 
 cifrarTexto = ""
 for letra in mensaje:
 	cifrarTexto = cifrarTexto + ENIGMA.cifrar(letra)
 
 print(cifrarTexto)
+"""
 
 animacion = True
 while animacion:
@@ -66,8 +71,21 @@ while animacion:
 	#fondo
 	PANTALLA.fill("#26252d")
 
+	# Entrada de texto
+
+	texto = BOLD.render(ENTRADA, True, "white")
+	caja_texto = texto.get_rect(center = (ANCHO/2, MARGENES["top"]/2))
+	PANTALLA.blit(texto, caja_texto)
+
+	# Salida de texto
+
+	texto = MONO.render(SALIDA, True, "white")
+	caja_texto = texto.get_rect(center = (ANCHO/2, MARGENES["top"]/2+25))
+	PANTALLA.blit(texto, caja_texto)
+
+
 	#dibujar la maquina enigma
-	dibujar(ENIGMA, PANTALLA, ANCHO, ALTURA, MARGENES, GAP, MONO)
+	dibujar(ENIGMA, PATH, PANTALLA, ANCHO, ALTURA, MARGENES, GAP, MONO)
 
 
 	#actualizarPantalla
@@ -80,6 +98,12 @@ while animacion:
 		elif event.type == pygame.KEYDOWN:
 			if event.key == pygame.K_DOWN:
 				II.rotar()
-
-
-
+ 
+			else:
+				key = event.unicode
+				if key in "abcdefghijklmnopqrstuvwxyz":
+					letra = key.upper()
+					ENTRADA = ENTRADA + letra
+					PATH, cifrado = ENIGMA.cifrar(letra)
+					print(PATH)
+					SALIDA = SALIDA + cifrado
