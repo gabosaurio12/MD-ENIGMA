@@ -1,3 +1,5 @@
+import pygame
+
 class Rotor:
 	def __init__(self, cableado, ranura):
 		self.izq = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
@@ -41,3 +43,33 @@ class Rotor:
 		n_ranura = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".find(self.ranura)
 		self.ranura = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"[(n_ranura - n) % 26]
 
+	def dibujar(propio, pantalla, x,y,w,h,fuente):
+         #rectángulo
+		r = pygame.Rect(x,y,w,h)
+		pygame.draw.rect(pantalla, "white", r, width = 2, border_radius =15)
+
+		#letras
+		for i in range(26):
+			
+			letra = propio.izq[i]
+			letra = fuente.render(letra, True, "grey")
+			caja_texto = letra.get_rect(center = (x+w/4, y+(i+1)*h/27))
+			
+
+			#remarcar letras de arriba
+			if i == 0:
+				pygame.draw.rect(pantalla, "teal", caja_texto, border_radius = 5)
+
+			#remarcar ranura
+			if propio.izq[i] == propio.ranura:
+				letra = fuente.render(propio.ranura, True, "#333333")
+				pygame.draw.rect(pantalla, "white", caja_texto, border_radius = 5)
+
+
+
+			pantalla.blit(letra, caja_texto)
+
+			letra = propio.der[i]
+			letra = fuente.render(letra, True, "grey")
+			caja_texto = letra.get_rect(center = (x+w*3/4, y+(i+1)*h/27))
+			pantalla.blit(letra, caja_texto)
