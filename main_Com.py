@@ -5,7 +5,7 @@ from enchufe import Enchufe
 from rotor import Rotor
 from reflector import Reflector
 from enigma import Enigma
-from dibujar2 import dibujar
+from dibujar import dibujar
 
 pygame.init()
 pygame.font.init()

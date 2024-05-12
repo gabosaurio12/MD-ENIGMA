@@ -45,9 +45,9 @@ def dibujar(enigma, path, pantalla, ancho, altura, margenes, gap, fuente):
 
 		x += w + gap
 
-	# nombarar
+	# nombrar
 
-	nombres = ["Reflector", "Izquierdo", "Central", "Derecho", "Enchufe", "Lampara"]
+	nombres = ["Reflector", "Izquierdo", "Central", "Derecho", "Enchufe", "Teclado/Lampara"]
 	y = margenes["top"] * 0.8
 	
 	for i in range(6):

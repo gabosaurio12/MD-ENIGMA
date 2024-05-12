@@ -27,17 +27,38 @@ def dibujar(enigma, path, pantalla, ancho, altura, margenes, gap, fuente):
 			elif i < 12:
 				color = "#f9c74f"
 			else:
-				color: "#e63946"
+				color = "#e63946"
 
 			start = (x[i-1], y[i-1])
 			end = (x[i], y[i])
 			pygame.draw.line(pantalla, color, start, end, width = 5)
 
+
+	x = margenes["left"]
 	y = margenes["top"]
 
-	enigma.teclado.dibujar(pantalla, 1200, y, 150, 480, fuente)
-	enigma.plugBoard.dibujar(pantalla, 950, y, 180, 480, fuente)
-	enigma.r3.dibujar(pantalla, 750, 180, y, 480, fuente)
-	enigma.r2.dibujar(pantalla, 550, 180, y, 480, fuente)
-	enigma.r1.dibujar(pantalla, 350, 180, y, 480, fuente)
-	enigma.reflector.dibujar(pantalla, 150, y, 180, 480, fuente)
+	# Componentes de enigma
+
+	enigma.reflector.dibujar(pantalla, x, y, w, h, fuente)
+	x += w + gap
+	enigma.r1.dibujar(pantalla, x, y, w, h, fuente)
+	x += w + gap
+	enigma.r2.dibujar(pantalla, x, y, w, h, fuente)
+	x += w + gap
+	enigma.r3.dibujar(pantalla, x, y, w, h, fuente)
+	x += w + gap
+	enigma.plugBoard.dibujar(pantalla, x, y, w, h, fuente)
+	x += w + gap
+	enigma.teclado.dibujar(pantalla, x, y, w, h, fuente)
+	x += w + gap
+
+	# Nombrar
+
+	nombres = ["Reflector", "Izquierdo", "Central", "Derecho", "Enchufe", "Tec/Lamp"]
+	y = margenes["top"] * 0.8
+	
+	for i in range(6):
+		x = margenes["left"] + w/2 + i * (w + gap)
+		titulo = fuente.render(nombres[i], True, "white")
+		caja_texto = titulo.get_rect(center = (x, margenes["top"] * 3/4))
+		pantalla.blit(titulo, caja_texto)
