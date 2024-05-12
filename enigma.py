@@ -40,36 +40,44 @@ class Enigma:
 
 		señal = self.teclado.forward(letra)
 		path = [señal, señal]
-		path.append(señal)
-		path.append(señal)
+
 		señal = self.plugBoard.forward(señal)
 		path.append(señal)
 		path.append(señal)
+
 		señal = self.r3.forward(señal)
 		path.append(señal)
 		path.append(señal)
+
 		señal = self.r2.forward(señal)
 		path.append(señal)
 		path.append(señal)
+
 		señal = self.r1.forward(señal)
 		path.append(señal)
 		path.append(señal)
+
 		señal = self.reflector.reflectar(señal)
 		path.append(señal)
 		path.append(señal)
 		path.append(señal)
+
 		señal = self.r1.backward(señal)
 		path.append(señal)
 		path.append(señal)
+
 		señal = self.r2.backward(señal)
 		path.append(señal)
 		path.append(señal)
+
 		señal = self.r3.backward(señal)
 		path.append(señal)
 		path.append(señal)
+
 		señal = self.plugBoard.backward(señal)
 		path.append(señal)
 		path.append(señal)
-		señal = self.teclado.backward(señal)
 
-		return path, señal
+		letra = self.teclado.backward(señal)
+
+		return path, letra

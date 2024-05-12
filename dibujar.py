@@ -6,20 +6,21 @@ def dibujar(enigma, path, pantalla, ancho, altura, margenes, gap, fuente):
 	h = altura - margenes["top"] - margenes["bottom"]
 
 
-	# dibujar path
-	y = [margenes["top"] + (señal + 1) * h / 27 for señal in path]
-	x = [(ancho - margenes["right"] - w / 2)]
+	# Coordenadas del path
+	y = [margenes["top"] + (señal + 1) * h/27 for señal in path]
+	x = [ancho - margenes["right"] - w/2] # Teclado
 
-	for i in [4,3,2,1,0]:
+	for i in [4,3,2,1,0]: # Ida
 		x.append(margenes["left"] + i * (w + gap) + w * 3/4)
 		x.append(margenes["left"] + i * (w + gap) + w * 1/4)
 	x.append(margenes["left"] + w * 3/4) #reflector
 
-	for i in [1,2,3,4]:
-		x.append(margenes["left"] + i * (w + gap- 10) + w * 1/4)
-		x.append(margenes["left"] + i * (w + gap - 10) + w * 3/4)
+	for i in [1,2,3,4]: # Vuelta
+		x.append(margenes["left"] + i * (w + gap) + w * 1/4)
+		x.append(margenes["left"] + i * (w + gap) + w * 3/4)
 	x.append(ancho - margenes["right"] - w/2) #lampara
 
+	# Dibujar el path
 	if len(path) > 0:
 		for i in range(1,21):
 			if i < 10:

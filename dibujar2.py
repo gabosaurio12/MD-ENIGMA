@@ -17,8 +17,8 @@ def dibujar(enigma, path, pantalla, ancho, altura, margenes, gap, fuente):
 	x.append(margenes["left"] + w * 3/4) #reflector
 
 	for i in [1,2,3,4]:
-		x.append(margenes["left"] + i * (w + gap- 10) + w * 1/4)
-		x.append(margenes["left"] + i * (w + gap - 10) + w * 3/4)
+		x.append(margenes["left"] + i * (w + gap) + w * 1/4)
+		x.append(margenes["left"] + i * (w + gap) + w * 3/4)
 	x.append(ancho - margenes["right"] - w/2) #lampara
 
 	if len(path) > 0:
