@@ -5,7 +5,7 @@ from enchufe import Enchufe
 from rotor import Rotor
 from reflector import Reflector
 from enigma import Enigma
-from dibujar import dibujar
+from dibujar2 import dibujar
 
 pygame.init()
 pygame.font.init()
@@ -74,13 +74,13 @@ while animacion:
 	# Entrada de texto
 
 	texto = BOLD.render(ENTRADA, True, "white")
-	caja_texto = texto.get_rect(center = (ANCHO/2, MARGENES["top"]/2))
+	caja_texto = texto.get_rect(center = (ANCHO/2, MARGENES["top"]/3))
 	PANTALLA.blit(texto, caja_texto)
 
 	# Salida de texto
 
 	texto = MONO.render(SALIDA, True, "white")
-	caja_texto = texto.get_rect(center = (ANCHO/2, MARGENES["top"]/2+25))
+	caja_texto = texto.get_rect(center = (ANCHO/2, MARGENES["top"]/3+25))
 	PANTALLA.blit(texto, caja_texto)
 
 
@@ -98,6 +98,10 @@ while animacion:
 		elif event.type == pygame.KEYDOWN:
 			if event.key == pygame.K_DOWN:
 				II.rotar()
+
+			elif event.key == pygame.K_SPACE:
+				ENTRADA = ENTRADA + " "
+				SALIDA = SALIDA + " "
  
 			else:
 				key = event.unicode
