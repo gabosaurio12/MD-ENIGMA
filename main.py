@@ -12,16 +12,16 @@ pygame.font.init()
 pygame.display.set_caption("Simulador Enigma")
 
 #crear fonts
-MONO = pygame.font.SysFont("American Typewriter", 25)
-BOLD = pygame.font.SysFont("American Typewriter", 25, bold = True)
+MONO = pygame.font.SysFont("American Typewriter", 20)
+BOLD = pygame.font.SysFont("American Typewriter", 20, bold = True)
 
 
 #variables globales
-ANCHO = 1400
+ANCHO = 1300
 ALTURA = 700
 PANTALLA = pygame.display.set_mode((ANCHO, ALTURA))
-MARGENES = {"top":180, "bottom":100, "left":100, "right":100}
-GAP = 100
+MARGENES = {"top":150, "bottom":50, "left":100, "right":100}
+GAP = 100;
 
 ENTRADA = ""
 SALIDA = ""
@@ -49,7 +49,7 @@ teclado = Teclado()
 enchufe = Enchufe(["AB", "CD", "EF"])
 
 # Elegir el orden de los rotores (I, II, III, IV)
-ENIGMA = Enigma(B, I, II, III, enchufe, teclado)
+ENIGMA = Enigma(B, I, III, II, enchufe, teclado)
 
 # Colocar la llave del mensaje
 ENIGMA.colocarLlave("ABC")
